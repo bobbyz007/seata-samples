@@ -1,0 +1,36 @@
+server:
+  port: 8082
+spring:
+  main:
+    allow-circular-references: true
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:33306/db_order?useSSL=false&serverTimezone=UTC
+    username: root
+    password: 123456
+seata:
+  enabled: true
+  application-id: order-service
+  tx-service-group: my_test_tx_group
+  #enable-auto-data-source-proxy: true
+  #use-jdk-proxy: false
+  config:
+    type: nacos
+    nacos:
+      namespace: seata-server
+      server-addr: 127.0.0.1:8848
+      group: SEATA_GROUP
+      dataId: "seataServer.properties"
+      username: "nacos"
+      password: "nacos"
+  registry:
+    type: zk
+    zk:
+      # 指定seata server构成的集群名称
+      cluster: default
+      server-addr: 127.0.0.1:2181
+      session-timeout: 6000
+      connect-timeout: 2000
+      username: ""
+      password: ""
