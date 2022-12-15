@@ -14,6 +14,7 @@ seata:
   enabled: true
   application-id: stock-service
   tx-service-group: my_test_tx_group
+  # 默认为true
   #enable-auto-data-source-proxy: true
   #use-jdk-proxy: false
   config:

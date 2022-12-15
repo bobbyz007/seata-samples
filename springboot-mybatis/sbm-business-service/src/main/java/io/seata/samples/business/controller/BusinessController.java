@@ -48,6 +48,7 @@ public class BusinessController {
     @RequestMapping("/purchase/rollback")
     public Boolean purchaseRollback() {
         try {
+            // 在account服务中，userId为1002时会模拟抛出运行时异常
             businessService.purchase("1002", "2001", 1);
         } catch (Exception e) {
             e.printStackTrace();
