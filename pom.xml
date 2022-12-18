@@ -69,17 +69,18 @@
         <nacos.client.version>2.1.2</nacos.client.version>
     </properties>
     <modules>
+        <!--<module>springboot-mybatis</module>-->
+        <module>springboot-dubbo-seata</module>
+
         <!-- <module>dubbo</module> -->
         <!-- <module>springboot</module> -->
         <!-- <module>nacos</module> -->
-        <!-- <module>springboot-dubbo-seata</module> -->
         <!-- <module>tcc</module> -->
         <!-- <module>springcloud-jpa-seata</module> -->
         <!-- <module>nutzboot-dubbo-fescar</module> -->
         <!-- <module>ha</module> -->
         <!-- <module>springcloud-eureka-seata</module> -->
         <!-- <module>multiple-datasource</module> -->
-        <module>springboot-mybatis</module>
         <!-- <module>springcloud-nacos-seata</module> -->
         <!-- <module>api</module> -->
         <!-- <module>springboot-shardingsphere-seata</module> -->
