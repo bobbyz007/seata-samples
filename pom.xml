@@ -24,7 +24,10 @@
     <version>1.1.0</version>
     <name>seata-samples ${project.version}</name>
     <properties>
-        <seata.version>1.5.2</seata.version>
+        <!-- 尝试使用新版本，解决与dubbo3集成我问题
+        https://github.com/seata/seata/issues/4934
+         -->
+        <seata.version>1.6.1</seata.version>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
