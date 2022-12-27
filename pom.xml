@@ -70,10 +70,12 @@
         <javax.annotation-api.version>1.3.2</javax.annotation-api.version>
 
         <nacos.client.version>2.1.2</nacos.client.version>
+        <mybatis-plus-boot-starter.version>3.5.2</mybatis-plus-boot-starter.version>
     </properties>
     <modules>
         <!--<module>springboot-mybatis</module>-->
-        <module>springboot-dubbo-seata</module>
+        <!--<module>springboot-dubbo-seata</module>-->
+        <module>dubbo-multiple-datasource-mybatis-plus</module>
 
         <!-- <module>dubbo</module> -->
         <!-- <module>springboot</module> -->
@@ -289,6 +291,16 @@
                 <groupId>com.alibaba.nacos</groupId>
                 <artifactId>nacos-client</artifactId>
                 <version>${nacos.client.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>${mybatis-plus-boot-starter.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.seata</groupId>
+                <artifactId>seata-spring-boot-starter</artifactId>
+                <version>${seata.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

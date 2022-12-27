@@ -41,7 +41,6 @@
         <mybatis.spring.boot.version>2.3.0</mybatis.spring.boot.version>
         <nacos-config-spring-boot.version>0.2.12</nacos-config-spring-boot.version>
         <lombok.version>1.18.24</lombok.version>
-        <mybatis-plus-boot-starter.version>3.5.2</mybatis-plus-boot-starter.version>
 
         <dubbo.version>3.1.3</dubbo.version>
         <dubbo-boot.version>3.1.3</dubbo-boot.version>
@@ -109,13 +108,11 @@
             <dependency>
                 <groupId>com.baomidou</groupId>
                 <artifactId>mybatis-plus-boot-starter</artifactId>
-                <version>${mybatis-plus-boot-starter.version}</version>
             </dependency>
 
             <dependency>
                 <groupId>io.seata</groupId>
                 <artifactId>seata-spring-boot-starter</artifactId>
-                <version>${seata.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
