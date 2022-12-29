@@ -16,7 +16,7 @@
   -->
 
 <configuration scan="true" scanPeriod="60 seconds" debug="false">
-    <property name="LOG_HOME" value="~/logs/shardingsphere-seata-order"/>
+    <property name="LOG_HOME" value="${user.home}/logs/shardingsphere-seata-order"/>
 
     <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">

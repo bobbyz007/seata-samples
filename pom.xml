@@ -76,12 +76,13 @@
         <!--<module>springboot-mybatis</module>-->
         <!--<module>springboot-dubbo-seata</module>-->
         <!--<module>dubbo-multiple-datasource-mybatis-plus</module>-->
-        <module>springboot-shardingsphere-seata</module>
+        <!--<module>springboot-shardingsphere-seata</module>-->
+        <module>tcc</module>
 
         <!-- <module>dubbo</module> -->
         <!-- <module>springboot</module> -->
         <!-- <module>nacos</module> -->
-        <!-- <module>tcc</module> -->
+
         <!-- <module>springcloud-jpa-seata</module> -->
         <!-- <module>nutzboot-dubbo-fescar</module> -->
         <!-- <module>ha</module> -->
@@ -120,6 +121,11 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-aop</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-tx</artifactId>
             <version>${spring.version}</version>
         </dependency>
     </dependencies>
