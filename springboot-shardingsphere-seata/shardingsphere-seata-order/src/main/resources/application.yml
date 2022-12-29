@@ -91,6 +91,7 @@ seata:
   # 必须配置为false，datasource由shardingsphere而不是seata接管：ShardingSphereDataSource，
   # 进而初始化 SeataATShardingSphereTransactionManager，负责与seata server交互
   enable-auto-data-source-proxy: false
+  # see https://github.com/apache/shardingsphere/issues/15086
   use-jdk-proxy: true
   application-id: shardingsphere-seata-order
   tx-service-group: my_test_tx_group
