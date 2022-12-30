@@ -1,0 +1,42 @@
+server:
+  port: 8085
+spring:
+  main:
+    allow-circular-references: true
+dubbo:
+  registry:
+    address: nacos://127.0.0.1:8848
+    group: SEATA_GROUP
+    username: nacos
+    password: nacos
+  application:
+    name: tcc-dubbo-provider
+    qos-enable: false
+  protocol:
+    name: dubbo
+    port: 20881
+
+seata:
+  enabled: true
+  application-id: dubbo-tcc-sample
+  tx-service-group: my_test_tx_group
+  #enable-auto-data-source-proxy: true
+  config:
+    type: nacos
+    nacos:
+      namespace: seata-server
+      server-addr: 127.0.0.1:8848
+      group: SEATA_GROUP
+      dataId: "seataServer.properties"
+      username: "nacos"
+      password: "nacos"
+  registry:
+    type: zk
+    zk:
+      # 指定seata server构成的集群名称
+      cluster: default
+      server-addr: 127.0.0.1:2181
+      session-timeout: 6000
+      connect-timeout: 2000
+      username: ""
+      password: ""

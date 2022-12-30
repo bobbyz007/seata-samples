@@ -25,8 +25,8 @@ spring:
           password: 123456
 dubbo:
   protocol:
-    loadbalance: leastactive
-    threadpool: cached
+    name: dubbo
+    port: 20881
   scan:
     base-packages: io.seata.samples.service
   application:

@@ -29,8 +29,8 @@
     <name>seata-samples-tcc ${project.version}</name>
     <modules>
         <module>local-tcc-sample</module>
-        <!--<module>dubbo-tcc-sample</module>
-        <module>transfer-tcc-sample</module>
+        <module>dubbo-tcc-sample</module>
+        <!--<module>transfer-tcc-sample</module>
         <module>springboot-tcc-sample</module>-->
     </modules>
 
@@ -103,7 +103,7 @@
             <artifactId>spring-boot-autoconfigure</artifactId>
             <version>${springboot.version}</version>
         </dependency>
-        
+
     </dependencies>
 
 </project>
