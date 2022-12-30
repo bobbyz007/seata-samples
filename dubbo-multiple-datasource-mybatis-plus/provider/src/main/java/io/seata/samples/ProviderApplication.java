@@ -17,6 +17,7 @@ package io.seata.samples;
 
 import com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure;
 
+import org.apache.dubbo.config.spring.context.annotation.EnableDubbo;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -24,8 +25,9 @@ import com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DynamicDataSour
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 
 /**
- * @author funkye
- * @date 2019/12/7
+ * 注意：如果在application.yml中没有配置dubbo scan，则需要添加注解@EnableDubbo(scanBasePackages = "io.seata.samples.service")
+ * scan:
+ *     base-packages: io.seata.samples.service
  */
 @SpringBootApplication(exclude = {DruidDataSourceAutoConfigure.class})
 public class ProviderApplication {

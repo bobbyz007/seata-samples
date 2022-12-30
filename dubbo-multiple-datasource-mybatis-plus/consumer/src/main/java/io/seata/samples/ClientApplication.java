@@ -28,6 +28,11 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
 import com.baomidou.mybatisplus.autoconfigure.MybatisPlusAutoConfiguration;
 
+/**
+ * 注意：如果在application.yml中没有配置dubbo scan，则需要添加注解@EnableDubbo(scanBasePackages = "io.seata.samples.service")
+ * scan:
+ *     base-packages: io.seata.samples.service
+ */
 @SpringBootApplication(exclude = {DataSourceAutoConfiguration.class, MybatisPlusAutoConfiguration.class, DruidDataSourceAutoConfigure.class})
 @EnableDubbo(scanBasePackages = {"io.seata.samples.service"})
 public class ClientApplication {
