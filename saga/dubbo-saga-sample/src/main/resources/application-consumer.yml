@@ -1,0 +1,15 @@
+server:
+  port: 8087
+
+dubbo:
+  registry:
+    address: nacos://127.0.0.1:8848
+    group: SEATA_GROUP
+    username: nacos
+    password: nacos
+  application:
+    name: saga-dubbo-consumer
+    qos-enable: false
+  protocol:
+    name: dubbo
+    port: -1

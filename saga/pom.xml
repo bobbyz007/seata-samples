@@ -29,7 +29,7 @@
     <name>seata-samples-saga ${project.version}</name>
     <modules>
         <module>local-saga-sample</module>
-        <!--<module>dubbo-saga-sample</module>-->
+        <module>dubbo-saga-sample</module>
     </modules>
 
     <properties>

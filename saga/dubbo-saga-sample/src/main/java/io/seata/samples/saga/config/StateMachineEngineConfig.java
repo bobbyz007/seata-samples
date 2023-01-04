@@ -5,16 +5,18 @@ import io.seata.saga.engine.impl.ProcessCtrlStateMachineEngine;
 import io.seata.saga.rm.StateMachineEngineHolder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
 import javax.sql.DataSource;
 import java.util.concurrent.ThreadPoolExecutor;
 
 /***
- * @author : Rain
- * @date : 2021/7/23 11:38 AM
+ * 提供者和消费者端都需要此配置
  */
 @Configuration
 public class StateMachineEngineConfig {
