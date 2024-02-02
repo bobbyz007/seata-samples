@@ -2,14 +2,24 @@ server:
   port: 8087
 
 dubbo:
-  registry:
-    address: nacos://127.0.0.1:8848
-    group: SEATA_GROUP
-    username: nacos
-    password: nacos
   application:
     name: saga-dubbo-consumer
     qos-enable: false
+  registry:
+    protocol: dubbo
+    address: nacos://127.0.0.1:8848
+    group: SEATA_GROUP
+    register: false # 不提供服务，只消费服务
+    use-as-config-center: true
+    use-as-metadata-center: true
   protocol:
     name: dubbo
-    port: -1
+    port: 20881 # -1: 端口自增
+    threads: 200
+    queues: 100
+    threadpool: cached
+  provider:
+    retries: 3
+    threadpool: cached
+    threads: 200
+    connections: 100

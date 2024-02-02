@@ -27,10 +27,6 @@
     <packaging>jar</packaging>
     <name>dubbo-saga-sample ${project.version}</name>
 
-    <properties>
-        <curator.version>4.2.0</curator.version>
-    </properties>
-
     <dependencies>
         <dependency>
             <groupId>org.apache.dubbo</groupId>

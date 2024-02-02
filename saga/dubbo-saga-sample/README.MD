@@ -36,19 +36,27 @@ public interface InventoryAction {
 
 ## demo 运行指南
 
-#### step 1 启动 SEATA Server
+1. 启动 SEATA Server  
+   参考 [Seata server部署指导](https://github.com/bobbyz007/seata-samples/blob/main/README.md)，启动 Seata Server；
+2. 在业务数据库中导入saga模式的数据库表  
+   导入官方提供对应版本的 [saga mysql tables](https://github.com/apache/incubator-seata/blob/v2.0.0/script/client/saga/db/mysql.sql) ，主要存储sage状态机定义及实例。
+    ```
+   mysql> create database test_dubbo_saga;
 
-运行 [SeataServerStarter](https://github.com/seata/seata-samples/blob/master/saga/sofarpc-saga-sample/src/test/java/io/seata/samples/saga/SeataServerStarter.java)
-，启动 Seata Server；
+   mysql> show tables;
+    +---------------------------+
+    | Tables_in_test_dubbo_saga |
+    +---------------------------+
+    | seata_state_inst          |
+    | seata_state_machine_def   |
+    | seata_state_machine_inst  |
+    +---------------------------+
+   ```
 
-#### step 2 启动 dubbo provider Demo
+3. 启动 dubbo provider Demo  
+添加程序的main args参数(类似于在JVM参数中添加-D)：--spring.profiles.active=provider 运行测试类 DubboSagaProviderStarter
 
-运行 [DubboSagaProviderStarter](https://github.com/seata/seata-samples/blob/master/saga/dubbo-saga-sample/src/test/java/io/seata/samples/saga/starter/DubboSagaProviderStarter.java)
-，启动 dubbo provider；
+4. 启动 Saga Demo  
+添加程序的main args参数(类似于在JVM参数中添加-D)：--spring.profiles.active=consumer 运行测试类 DubboSagaTransactionStarter
 
-### step 3 启动 Saga Demo
-
-运行 [DubboSagaTransactionStarter](https://github.com/seata/seata-samples/blob/master/saga/dubbo-saga-sample/src/main/java/io/seata/samples/saga/starter/DubboSagaTransactionStarter.java)
-, 启动 demo工程；
-
-内含Saga 调用dubbo服务 事务提交场景和Saga 调用dubbo服务 事务回滚场景的演示；
+内含Saga 调用dubbo服务 事务提交场景和Saga 调用dubbo服务 事务回滚场景的演示。

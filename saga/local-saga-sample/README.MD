@@ -44,6 +44,8 @@ public interface InventoryAction {
 2. 在业务数据库中导入saga模式的数据库表  
 导入官方提供对应版本的 [saga mysql tables](https://github.com/apache/incubator-seata/blob/v2.0.0/script/client/saga/db/mysql.sql) ，主要存储sage状态机定义及实例。
     ```
+   mysql> create database test_local_saga;
+
    mysql> show tables;
     +---------------------------+
     | Tables_in_test_local_saga |

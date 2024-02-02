@@ -57,7 +57,8 @@
         <druid.version>1.2.21</druid.version>
         <jakarta-annotation-api.version>2.1.1</jakarta-annotation-api.version>
 
-        <nacos.client.version>2.3.0</nacos.client.version>
+        <!-- bugs in 2.3.0, wait to upgrade 2.3.1 -->
+        <nacos.client.version>2.2.4</nacos.client.version>
         <mybatis-plus.version>3.5.5</mybatis-plus.version>
         <druid-starter.version>1.2.21</druid-starter.version>
     </properties>
