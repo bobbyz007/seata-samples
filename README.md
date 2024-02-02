@@ -63,7 +63,7 @@ As the official samples project includes too many sub projects and the dependenc
                #  server:
                #    service-port: 8091 #If not configured, the default is '${server.port} + 1000'
       ```
-   3. 登录nacos控制台(http://localhost:8848/nacos)，根据上述seata配置文件config段指定的data-id, group, namespace新增配置项(界面中格式选择TEXT)。配置项的内容参考 seata-server-2.0.0\seata\script\config-center\config.txt 进行裁剪。  
+   3. 登录nacos控制台( http://localhost:8848/nacos )，根据上述seata配置文件config段指定的data-id, group, namespace新增配置项(界面中格式选择TEXT)。配置项的内容参考 seata-server-2.0.0\seata\script\config-center\config.txt 进行裁剪。  
    config.txt提供了事务存储的三种配置样例，分别是file,db,redis。此处以db为例，删除对应file和redis的配置，其他配置保留默认即可。  
    主要适配修改service和store打头的配置，参考如下：
       ```yaml

@@ -43,22 +43,19 @@ public class ApplicationKeeper {
     }
 
     private void addShutdownHook(final ConfigurableApplicationContext applicationContext) {
-        Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    applicationContext.close();
-                    LOGGER.info("ApplicationContext " + applicationContext + " is closed.");
-                } catch (Exception e) {
-                    LOGGER.error("Failed to close ApplicationContext", e);
-                }
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+            try {
+                applicationContext.close();
+                LOGGER.info("ApplicationContext " + applicationContext + " is closed.");
+            } catch (Exception e) {
+                LOGGER.error("Failed to close ApplicationContext", e);
+            }
 
-                try {
-                    LOCK.lock();
-                    STOP.signal();
-                } finally {
-                    LOCK.unlock();
-                }
+            try {
+                LOCK.lock();
+                STOP.signal();
+            } finally {
+                LOCK.unlock();
             }
         }));
     }
