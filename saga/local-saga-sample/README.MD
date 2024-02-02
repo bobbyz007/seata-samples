@@ -40,7 +40,7 @@ public interface InventoryAction {
 
 #### step 1 启动 SEATA Server
 
-运行 [SeataServerStarter](https://github.com/seata/seata-samples/blob/master/saga/local-saga-sample/src/test/java/io/seata/samples/saga/SeataServerStarter.java)
+参考 [Seata server部署指导](https://github.com/bobbyz007/seata-samples/blob/main/README.md)
 ，启动 Seata Server；
 
 #### step 2 启动 Saga Demo
