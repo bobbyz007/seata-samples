@@ -36,10 +36,10 @@ public interface InventoryAction {
 
 ## demo 运行指南
 
-1. 启动 SEATA Server  
+1. 启动 Seata Server  
    参考 [Seata server部署指导](https://github.com/bobbyz007/seata-samples/blob/main/README.md)，启动 Seata Server；
 2. 在业务数据库中导入saga模式的数据库表  
-   导入官方提供对应版本的 [saga mysql tables](https://github.com/apache/incubator-seata/blob/v2.0.0/script/client/saga/db/mysql.sql) ，主要存储sage状态机定义及实例。
+   导入官方提供对应版本的 [saga mysql tables](https://github.com/apache/incubator-seata/blob/v2.0.0/script/client/saga/db/mysql.sql) ，主要存储seata状态机定义及实例。
     ```
    mysql> create database test_dubbo_saga;
 
