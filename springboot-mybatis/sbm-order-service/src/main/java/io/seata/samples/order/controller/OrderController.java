@@ -31,7 +31,8 @@ public class OrderController {
     OrderService orderService;
 
     @GetMapping(value = "/debit")
-    public void debit(@RequestParam String userId, @RequestParam String commodityCode, @RequestParam Integer count) {
+    public void debit(@RequestParam(name = "userId") String userId, @RequestParam(name = "commodityCode") String commodityCode,
+                      @RequestParam(name = "count") Integer count) {
         System.out.println("order XID " + RootContext.getXID());
         orderService.create(userId, commodityCode, count);
     }

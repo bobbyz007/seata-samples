@@ -38,5 +38,4 @@ public class AccountController {
         System.out.println("account XID " + RootContext.getXID());
         accountService.debit(userId, orderMoney);
     }
-
 }
