@@ -14,11 +14,11 @@
     <name>sbm-stock-service</name>
     <description>Demo project for Spring Boot</description>
 
-
     <dependencies>
         <dependency>
             <groupId>io.seata</groupId>
             <artifactId>sbm-common-service</artifactId>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>

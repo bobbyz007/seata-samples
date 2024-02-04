@@ -24,6 +24,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * http://localhost:8083/?userId=1001&orderMoney=100
+ */
 @RestController
 public class AccountController {
 
@@ -31,7 +34,7 @@ public class AccountController {
     AccountService accountService;
 
     @GetMapping
-    public void debit(@RequestParam String userId, @RequestParam BigDecimal orderMoney) {
+    public void debit(@RequestParam(name = "userId") String userId, @RequestParam(name = "orderMoney") BigDecimal orderMoney) {
         System.out.println("account XID " + RootContext.getXID());
         accountService.debit(userId, orderMoney);
     }

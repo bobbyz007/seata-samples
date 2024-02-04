@@ -20,9 +20,8 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
-
 import io.seata.samples.common.interceptor.SeataRestTemplateInterceptor;
-import javax.annotation.PostConstruct;
+import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

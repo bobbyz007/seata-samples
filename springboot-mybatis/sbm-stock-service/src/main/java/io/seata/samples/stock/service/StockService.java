@@ -131,6 +131,6 @@ reference solution:
         stock.setCount(stock.getCount() - count);
         stockMapper.updateById(stock);
     }
-    1.select for update,refer https://seata.io/zh-cn/docs/overview/faq.html#4
+    1.select for update,refer https://seata.apache.org/zh-cn/docs/overview/faq/#4
     2.(optional)use @Transactional,keep X locks held until connection submission
 */

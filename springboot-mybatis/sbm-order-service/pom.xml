@@ -18,6 +18,7 @@
         <dependency>
             <groupId>io.seata</groupId>
             <artifactId>sbm-common-service</artifactId>
+            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
@@ -31,6 +32,10 @@
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid-spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-autoconfigure</artifactId>
         </dependency>
     </dependencies>
 
