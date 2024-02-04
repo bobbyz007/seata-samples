@@ -35,7 +35,7 @@ public class StockController {
     StockService stockService;
 
     @GetMapping(value = "/deduct")
-    public void deduct(@RequestParam String commodityCode, @RequestParam Integer count) throws SQLException {
+    public void deduct(@RequestParam(name = "commodityCode") String commodityCode, @RequestParam(name = "count") Integer count) throws SQLException {
         System.out.println("stock XID " + RootContext.getXID());
         stockService.deduct(commodityCode, count);
     }

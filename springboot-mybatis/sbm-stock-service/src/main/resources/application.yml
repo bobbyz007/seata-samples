@@ -9,7 +9,6 @@ spring:
     url: jdbc:mysql://127.0.0.1:3306/db_stock?useSSL=false&serverTimezone=UTC
     username: mysql
     password: mysql
-
 seata:
   enabled: true
   application-id: stock-service
