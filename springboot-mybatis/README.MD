@@ -79,5 +79,8 @@
 <br>
 启动stock服务：负责商品库存扣减以及查询等。  
 访问 http://localhost:8081/api/stock/deduct?commodityCode=2001&count=10 验证。  
-根据id访问商品库存： http://localhost:8081/api/stock/get/1
+根据id访问商品库存： http://localhost:8081/api/stock/get/1  
+<br>
+启动business服务： 模拟实际业务逻辑调用底层各个服务，验证如何保证分布式事务的提交或回滚。  
+
 
