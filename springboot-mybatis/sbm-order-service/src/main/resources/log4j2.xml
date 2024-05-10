@@ -23,7 +23,7 @@
     </Appenders>
     <Loggers>
         <!-- 配置打印单个Mapper sql语句 -->
-        <!--<Logger name="io.seata.samples.stock.persistence.StockMapper" level="trace"/>-->
+        <!--<Logger name="persistence.org.example.stock.StockMapper" level="trace"/>-->
         <!-- 配置打印一组Mapper sql语句 -->
         <!--<Logger name="io.seata.samples.stock.persistence" level="trace"/>-->
         <Root level="info">

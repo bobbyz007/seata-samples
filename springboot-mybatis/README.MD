@@ -1,6 +1,6 @@
 # Seata AT(Auto Transaction) 模式
 ## demo 说明
-
+TODO: 目前seata 2.0.0版本存在bug，等待新版本再验证。  
 基于 Seata AT 模式，演示分布式事务的提交和回滚；
 
 ## demo 运行指南
@@ -72,7 +72,7 @@
    ```
 
 3. 启动 各个微服务。  
-启动account服务: 管理用户账户余额，访问 http://localhost:8083/?userId=1001&orderMoney=100 验证。  
+启动account服务: 管理用户账户余额，访问 http://localhost:8083/api/account/debit?userId=1001&orderMoney=10 验证。  
 <br>
 启动order服务： 负责创建订单，以及调用account服务扣减用户账户余额。  
 访问 http://localhost:8082/api/order/debit?userId=1001&commodityCode=2001&count=10 验证。  

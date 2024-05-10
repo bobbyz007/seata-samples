@@ -17,51 +17,51 @@ As the official samples project includes too many sub projects and the dependenc
    此处仅列出配置文件中需要适配的部分配置，其他配置保持默认即可。
       ```yaml
       seata:
-         config:
-            # support: nacos, consul, apollo, zk, etcd3
-            type: nacos
-            nacos:
-               server-addr: 127.0.0.1:8848
-               namespace: seata-server
-               group: SEATA_GROUP
-               #username: nacos
-               #password: nacos
-               ##if use MSE Nacos with auth, mutex with username/password attribute
-               #access-key: ""
-               #secret-key: ""
-               data-id: seataServer.properties
-         registry:
-            # support: nacos, eureka, redis, zk, consul, etcd3, sofa
-            type: nacos
-            nacos:
-               server-addr: 127.0.0.1:8848
-               namespace: seata-server
-               group: SEATA_GROUP
-               application: seata-server
-               cluster: default
-               ##if use MSE Nacos with auth, mutex with username/password attribute
-               #access-key:
-               #secret-key:
-         store:
-            # support: file 、 db 、 redis 、 raft
-            mode: db
-            db:
-               datasource: druid
-               db-type: mysql
-               driver-class-name: com.mysql.cj.jdbc.Driver
-               url: jdbc:mysql://127.0.0.1:33306/seata?rewriteBatchedStatements=true
-               user: mysql
-               password: mysql
-               min-conn: 5
-               max-conn: 100
-               global-table: global_table
-               branch-table: branch_table
-               lock-table: lock_table
-               distributed-lock-table: distributed_lock
-               query-limit: 100
-               max-wait: 5000
-               #  server:
-               #    service-port: 8091 #If not configured, the default is '${server.port} + 1000'
+        config:
+          # support: nacos, consul, apollo, zk, etcd3
+          type: nacos
+          nacos:
+            server-addr: 127.0.0.1:8848
+            namespace: seata-server
+            group: SEATA_GROUP
+            #username: nacos
+            #password: nacos
+            ##if use MSE Nacos with auth, mutex with username/password attribute
+            #access-key: ""
+            #secret-key: ""
+            data-id: seataServer.properties
+        registry:
+          # support: nacos, eureka, redis, zk, consul, etcd3, sofa
+          type: nacos
+          nacos:
+            server-addr: 127.0.0.1:8848
+            namespace: seata-server
+            group: SEATA_GROUP
+            application: seata-server
+            cluster: default
+            ##if use MSE Nacos with auth, mutex with username/password attribute
+            #access-key:
+            #secret-key:
+        store:
+          # support: file 、 db 、 redis 、 raft
+          mode: db
+          db:
+            datasource: druid
+            db-type: mysql
+            driver-class-name: com.mysql.cj.jdbc.Driver
+            url: jdbc:mysql://127.0.0.1:33306/seata?rewriteBatchedStatements=true
+            user: mysql
+            password: mysql
+            min-conn: 5
+            max-conn: 100
+            global-table: global_table
+            branch-table: branch_table
+            lock-table: lock_table
+            distributed-lock-table: distributed_lock
+            query-limit: 100
+            max-wait: 5000
+            #  server:
+            #    service-port: 8091 #If not configured, the default is '${server.port} + 1000'
       ```
    3. 登录nacos控制台( http://localhost:8848/nacos )，根据上述seata配置文件config段指定的data-id, group, namespace新增配置项(界面中格式选择TEXT)。配置项的内容参考 seata-server-2.0.0\seata\script\config-center\config.txt 进行裁剪。  
    config.txt提供了事务存储的三种配置样例，分别是file,db,redis。此处以db为例，删除对应file和redis的配置，其他配置保留默认即可。  
