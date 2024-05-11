@@ -3,14 +3,13 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <artifactId>seata-samples</artifactId>
         <groupId>org.example.seata</groupId>
-        <version>1.1.0</version>
+        <artifactId>seata-samples</artifactId>
+        <version>${revision}</version>
     </parent>
     <groupId>org.example.seata</groupId>
     <artifactId>springboot-mybatis</artifactId>
     <packaging>pom</packaging>
-    <version>1.1.0</version>
     <name>springboot-mybatis</name>
     <description>Demo project for Spring Boot</description>
 

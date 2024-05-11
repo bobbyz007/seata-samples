@@ -16,7 +16,9 @@ Integration SpringBoot + Dubbo + Mybatis-plus + Nacos + Seata
 
 ### 2. prepare database
 
-create database （默认为：seata），import db_seata.sql to database
+create database （默认为：seata），import db_seata.sql to database。  
+导入官方提供的undo_log表： [undo log tables](https://github.com/apache/incubator-seata/blob/v2.0.0/script/client/at/db/mysql.sql) ，自行下载导入。
+
 
 then you will see ：
 
@@ -33,22 +35,17 @@ then you will see ：
 
 ### 3. start Nacos
 Nacos quickstart：https://nacos.io/en-us/docs/quick-start.html
-
 enter the Nacos webconsole：http://127.0.0.1:8848/nacos/index.html
 
 ### 4. start Seata Server
-
-download page：https://github.com/seata/seata/releases
-
-基于1.6.0版本，download and unzip seata-server，cd the bin dictory, and run
-
-```bash
-bin/seata-server.sh -h 127.0.0.1 -p 8091
-```
+参考 [Seata server部署指导](https://github.com/bobbyz007/seata-samples/blob/main/README.md)，启动 Seata Server；
 
 ### 5. start the demo module
-
-start samples-account、samples-order、samples-stock、samples-business
+start samples-account、samples-order、samples-stock、samples-business  
+注意：需要配置逻辑事务分组 到 seata集群的映射关系，例如： 
+```shell
+service.vgroupMapping.my_test_tx_group=default
+```
 
 use Nacos webconsole to ensure the registry is ok: http://127.0.0.1:8848/nacos/#/serviceManagement
 
@@ -66,7 +63,8 @@ body：
     "commodityCode":"C201901140001",
     "name":"fan",
     "count":2,
-    "amount":"100"
+    "amount":"100",
+    "rollback": false
 }
 ```
 
@@ -79,16 +77,19 @@ curl -H "Content-Type:application/json" -X POST -d '{"userId":"1","commodityCode
 then this will send a pay request,and return code is 200
 
 ### 7. test the rollback request
+use postman to send a post request：http://localhost:8104/business/dubbo/buy
 
-enter samples-business , change BusinessServiceImpl, uncomment the following code ：
-
-```
-if (!flag) {
-  throw new RuntimeException("测试抛异常后，分布式事务回滚！");
+body：
+```json
+{
+    "userId":"1",
+    "commodityCode":"C201901140001",
+    "name":"fan",
+    "count":2,
+    "amount":"100",
+    "rollback": true
 }
 ```
-
-restart the samples-business module, and execute the step 6. 
 
 如何验证的确回滚了： 手工往t_order插入一条记录，可以看到自增id跳过了一条记录，说明插入后又回滚删除了！
 ```roomsql

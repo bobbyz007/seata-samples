@@ -18,23 +18,25 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <groupId>io.seata</groupId>
+        <groupId>org.example.seata</groupId>
         <artifactId>springboot-dubbo-seata</artifactId>
-        <version>1.1.0</version>
+        <version>${revision}</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <packaging>jar</packaging>
     <artifactId>samples-common</artifactId>
     <name>samples-common ${project.version}</name>
 
-    <properties>
-        <maven.compiler.plugin.version>3.10.1</maven.compiler.plugin.version>
-    </properties>
-
     <dependencies>
+        <!-- 注意：此依赖放在前面，防止其他间接依赖覆盖log相关依赖 -->
         <dependency>
-            <groupId>io.seata</groupId>
-            <artifactId>seata-all</artifactId>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-log4j2</artifactId>
+        </dependency>
+        <!-- 注意：此依赖放在前面，防止被nacos-client的间接依赖覆盖 -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
         </dependency>
 
         <dependency>
@@ -52,42 +54,41 @@
             <artifactId>nacos-client</artifactId>
         </dependency>
 
-        <dependency>
+        <!--<dependency>
             <groupId>com.alibaba.boot</groupId>
             <artifactId>nacos-config-spring-boot-starter</artifactId>
             <exclusions>
                 <exclusion>
-                    <artifactId>nacos-client</artifactId>
                     <groupId>com.alibaba.nacos</groupId>
+                    <artifactId>nacos-client</artifactId>
                 </exclusion>
             </exclusions>
-        </dependency>
+        </dependency>-->
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         <dependency>
-            <groupId>io.seata</groupId>
+            <groupId>org.apache.seata</groupId>
             <artifactId>seata-spring-boot-starter</artifactId>
         </dependency>
+
+        <!--mybatis-plus-boot-starter依赖的mybatis-spring版本太低，导致与新版本spring不兼容，此处指定新版本-->
         <dependency>
-            <groupId>com.101tec</groupId>
-            <artifactId>zkclient</artifactId>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.slf4j</groupId>
-                    <artifactId>slf4j-reload4j</artifactId>
-                </exclusion>
-            </exclusions>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis-spring</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.mybatis.spring.boot</groupId>
-            <artifactId>mybatis-spring-boot-starter</artifactId>
-        </dependency>
+        <!--引入Mybatis-plus 就不要引入mybatis-spring-boot-starter 避免因版本差异导致的问题-->
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-boot-starter</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.mybatis</groupId>
+                    <artifactId>mybatis-spring</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <dependency>
@@ -95,19 +96,10 @@
             <artifactId>mysql-connector-j</artifactId>
             <scope>runtime</scope>
         </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
 
     </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>${maven.compiler.plugin.version}</version>
-                <configuration>
-                    <source>${java.version}</source>
-                    <target>${java.version}</target>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
 </project>

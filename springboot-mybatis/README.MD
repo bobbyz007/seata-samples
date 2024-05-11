@@ -1,6 +1,5 @@
 # Seata AT(Auto Transaction) 模式
 ## demo 说明
-TODO: 目前seata 2.0.0版本存在bug，等待新版本再验证。  
 基于 Seata AT 模式，演示分布式事务的提交和回滚；
 
 ## demo 运行指南
@@ -82,5 +81,7 @@ TODO: 目前seata 2.0.0版本存在bug，等待新版本再验证。
 根据id访问商品库存： http://localhost:8081/api/stock/get/1  
 <br>
 启动business服务： 模拟实际业务逻辑调用底层各个服务，验证如何保证分布式事务的提交或回滚。  
+提交：http://localhost:8084/api/business/purchase/commit  
+回滚：http://localhost:8084/api/business/purchase/rollback
 
 

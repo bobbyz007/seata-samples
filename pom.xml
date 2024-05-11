@@ -21,9 +21,11 @@
     <groupId>org.example.seata</groupId>
     <artifactId>seata-samples</artifactId>
     <packaging>pom</packaging>
-    <version>1.1.0</version>
+    <version>${revision}</version>
     <name>seata-samples ${project.version}</name>
     <properties>
+        <revision>1.1.0</revision>
+
         <seata.version>2.1.0-SNAPSHOT</seata.version>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -39,7 +41,7 @@
 
         <netty4.version>4.1.106.Final</netty4.version>
         <junit.version>5.10.1</junit.version>
-        <dubbo.version>3.2.10</dubbo.version>
+        <dubbo.version>3.2.12</dubbo.version>
         <fastjson2.version>2.0.46</fastjson2.version>
         <config.version>1.4.3</config.version>
 
@@ -48,27 +50,29 @@
         <testng.version>7.9.0</testng.version>
         <protobuf.version>3.25.2</protobuf.version>
 
-        <spring.version>6.1.3</spring.version>
-        <springboot.version>3.2.2</springboot.version>
+        <spring.version>6.1.6</spring.version>
+        <springboot.version>3.2.5</springboot.version>
         <mysql-connector.version>8.3.0</mysql-connector.version>
         <curator.version>5.6.0</curator.version>
         <guava.version>33.0.0-jre</guava.version>
-        <jackson.version>2.16.1</jackson.version>
+        <jackson.version>2.16.2</jackson.version>
         <druid.version>1.2.21</druid.version>
         <jakarta-annotation-api.version>2.1.1</jakarta-annotation-api.version>
 
-        <!-- bugs in 2.3.0, wait to upgrade 2.3.1 -->
-        <nacos.client.version>2.2.4</nacos.client.version>
-        <mybatis-plus.version>3.5.5</mybatis-plus.version>
+        <!-- bugs in 2.3.0 -->
+        <nacos.client.version>2.3.2</nacos.client.version>
+        <mybatis-plus.version>3.5.6</mybatis-plus.version>
         <druid-starter.version>1.2.21</druid-starter.version>
         <jakarta.servlet-api.version>6.0.0</jakarta.servlet-api.version>
         <mybatis.spring.boot.version>3.0.3</mybatis.spring.boot.version>
+        <mybatis.spring.version>3.0.3</mybatis.spring.version>
+        <lombok.version>1.18.32</lombok.version>
     </properties>
 
     <!-- 由于各个测试模块依赖差别大，建议每次测试仅开放一个模块 -->
     <modules>
-        <module>springboot-mybatis</module>
-        <!--<module>springboot-dubbo-seata</module>-->
+        <!--<module>springboot-mybatis</module>-->
+        <module>springboot-dubbo-seata</module>
         <!--<module>dubbo-multiple-datasource-mybatis-plus</module>-->
         <!--<module>springboot-shardingsphere-seata</module>-->
         <!--<module>tcc</module>-->
@@ -268,6 +272,16 @@
                 <artifactId>mybatis-spring-boot-starter</artifactId>
                 <version>${mybatis.spring.boot.version}</version>
             </dependency>
+            <dependency>
+                <groupId>org.mybatis</groupId>
+                <artifactId>mybatis-spring</artifactId>
+                <version>${mybatis.spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -333,7 +347,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.12.1</version>
+                <version>3.13.0</version>
                 <configuration>
                     <source>${maven.compiler.source}</source>
                     <target>${maven.compiler.target}</target>
