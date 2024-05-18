@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.example.seata.multiple.provider.mapper.AccountMapper">
+    <resultMap id="AccountResultMap" type="org.example.seata.multiple.common.entity.Account">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="user_name" property="userName" jdbcType="VARCHAR"/>
+        <result column="sum" property="sum" jdbcType="DECIMAL"/>
+    </resultMap>
+
+    <select id="selectByUserId" resultType="org.example.seata.multiple.common.entity.Account">
+        select id, user_name, sum
+        from account
+        WHERE id = #{userId}
+    </select>
+
+    <update id="updateAccountById" parameterType="org.example.seata.multiple.common.entity.Account">
+        update account
+        set sum = #{sum,jdbcType=DECIMAL}
+        where id = #{id}
+    </update>
+
+</mapper>

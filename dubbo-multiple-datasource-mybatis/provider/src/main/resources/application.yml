@@ -1,0 +1,76 @@
+server:
+  port: 38888
+spring:
+  application:
+    name: test-provider
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    dynamic:
+      seata: true
+      primary: master_1
+      datasource:
+        master_1:
+          url: jdbc:mysql://127.0.0.1:3306/test_pay?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+          driver-class-name: com.mysql.cj.jdbc.Driver
+          username: mysql
+          password: mysql
+        master_2:
+          url: jdbc:mysql://127.0.0.1:3306/test_order?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+          driver-class-name: com.mysql.cj.jdbc.Driver
+          username: mysql
+          password: mysql
+        master_3:
+          url: jdbc:mysql://127.0.0.1:3306/test_storage?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+          driver-class-name: com.mysql.cj.jdbc.Driver
+          username: mysql
+          password: mysql
+dubbo:
+  application:
+    name: test-provider
+    qos-enable: false
+  registry:
+    protocol: dubbo
+    address: nacos://127.0.0.1:8848
+    use-as-config-center: true
+    use-as-metadata-center: true
+  protocol:
+    name: dubbo
+    port: 20881
+
+seata:
+  enabled: true
+  # 关闭自动代理数据源，因为我们需要mybatis plus控制动态数据源切换。
+  enable-auto-data-source-proxy: false
+  application-id: dubbo-md-mp-provider
+  tx-service-group: my_test_tx_group
+  config:
+    type: nacos
+    nacos:
+      namespace: seata-server
+      server-addr: 127.0.0.1:8848
+      group: SEATA_GROUP
+      dataId: seataServer.properties
+      username: nacos
+      password: nacos
+  registry:
+    type: nacos
+    nacos:
+      server-addr: 127.0.0.1:8848
+      namespace: seata-server
+      group: SEATA_GROUP
+      application: seata-server
+      cluster: default
+
+mybatis-plus:
+  mapper-locations: classpath:/mapper/*Mapper.xml
+  typeAliasesPackage: org.example.seata.multiple.common.entity
+  global-config:
+    db-config:
+      field-strategy: not-empty
+      id-type: auto
+      db-type: mysql
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: true
+    auto-mapping-unknown-column-behavior: none
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

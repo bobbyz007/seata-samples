@@ -1,0 +1,59 @@
+spring:
+  application:
+    name: test-consumer
+  mvc:
+    servlet:
+      load-on-startup: 1
+  http:
+    encoding:
+      force: true
+      charset: utf-8
+      enabled: true
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+server:
+  port: 28888
+  max-http-header-size: 8192
+  address: 0.0.0.0
+  tomcat:
+    max-http-post-size: 104857600
+
+dubbo:
+  application:
+    name: test-consumer
+    qos-port: 22222
+  registry:
+    protocol: dubbo
+    address: nacos://127.0.0.1:8848
+    register: false # 不提供服务，只消费服务
+    use-as-config-center: true
+    use-as-metadata-center: true
+  protocol:
+    name: dubbo
+    port: 20880 # -1: 端口自增
+    threads: 200
+    queues: 100
+    threadpool: cached
+
+seata:
+  enabled: true
+  application-id: dubbo-md-mp-consumer
+  tx-service-group: my_test_tx_group
+  config:
+    type: nacos
+    nacos:
+      namespace: seata-server
+      server-addr: 127.0.0.1:8848
+      group: SEATA_GROUP
+      dataId: seataServer.properties
+      username: nacos
+      password: nacos
+  registry:
+    type: nacos
+    nacos:
+      server-addr: 127.0.0.1:8848
+      namespace: seata-server
+      group: SEATA_GROUP
+      application: seata-server
+      cluster: default
