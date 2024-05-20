@@ -47,10 +47,8 @@ public interface TccActionTwo {
 
 ## demo 运行指南
 
-#### step 1 启动 Fesacr Server
-
-运行 [SeataServerStarter](https://github.com/seata/seata-samples/blob/master/tcc/local-tcc-sample/src/test/java/io/seata/samples/tcc/SeataServerStarter.java)
-，启动 Seata Server；
+#### step 1 启动 Seata Server
+命令行单独启动 Seata Server；
 
 #### step 2 启动 TCC Demo
 

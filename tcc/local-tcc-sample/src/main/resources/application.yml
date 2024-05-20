@@ -18,12 +18,10 @@ seata:
       username: "nacos"
       password: "nacos"
   registry:
-    type: zk
-    zk:
-      # 指定seata server构成的集群名称
+    type: nacos
+    nacos:
+      server-addr: 127.0.0.1:8848
+      namespace: seata-server
+      group: SEATA_GROUP
+      application: seata-server
       cluster: default
-      server-addr: 127.0.0.1:2181
-      session-timeout: 6000
-      connect-timeout: 2000
-      username: ""
-      password: ""

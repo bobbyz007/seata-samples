@@ -73,9 +73,9 @@
     <modules>
         <!--<module>springboot-mybatis</module>-->
         <!--<module>springboot-dubbo-seata</module>-->
-        <module>dubbo-multiple-datasource-mybatis</module>
+        <!--<module>dubbo-multiple-datasource-mybatis</module>-->
         <!--<module>springboot-shardingsphere-seata</module>-->
-        <!--<module>tcc</module>-->
+        <module>tcc</module>
         <!--<module>saga</module>-->
     </modules>
 

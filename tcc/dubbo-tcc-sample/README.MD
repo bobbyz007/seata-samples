@@ -47,8 +47,7 @@ public interface TccActionTwo {
 
 #### step 1 启动 Seata Server
 
-运行 [SeataServerStarter](https://github.com/seata/seata-samples/blob/master/tcc/dubbo-tcc-sample/src/test/java/io/seata/samples/tcc/SeataServerStarter.java)
-，启动 Seata Server；
+命令行单独启动 Seata Server；
 
 #### step 2 启动 dubbo 服务
 
