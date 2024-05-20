@@ -17,7 +17,7 @@ package org.example.seata.tcc.dubbo.action.impl;
 
 import java.util.List;
 
-import io.seata.rm.tcc.api.BusinessActionContext;
+import org.apache.seata.rm.tcc.api.BusinessActionContext;
 import org.example.seata.tcc.dubbo.action.ResultHolder;
 import org.example.seata.tcc.dubbo.action.TccActionTwo;
 import org.apache.dubbo.config.annotation.DubboService;

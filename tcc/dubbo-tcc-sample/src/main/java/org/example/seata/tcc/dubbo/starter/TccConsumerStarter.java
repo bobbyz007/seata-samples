@@ -30,8 +30,8 @@ import org.springframework.util.Assert;
 /**
  * 因为provider和consumer在一个工程中，启动时记得修改application.yml的端口号 Server.port
  */
-@SpringBootApplication(scanBasePackages = "io.seata.samples.tcc.dubbo.service")
-@EnableDubbo(scanBasePackages = "io.seata.samples.tcc.dubbo.service")
+@SpringBootApplication(scanBasePackages = "org.example.seata.tcc.dubbo.service")
+@EnableDubbo(scanBasePackages = "org.example.seata.tcc.dubbo.service")
 public class TccConsumerStarter{
     static TccTransactionService tccTransactionService = null;
 

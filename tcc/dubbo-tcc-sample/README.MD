@@ -51,13 +51,11 @@ public interface TccActionTwo {
 
 #### step 2 启动 dubbo 服务
 
-运行 [DubboTccProviderStarter](https://github.com/seata/seata-samples/blob/master/tcc/dubbo-tcc-sample/src/main/java/io/seata/samples/tcc/dubbo/starter/DubboTccProviderStarter.java)
-
+运行TccProviderStarter,  
 本应用发布TCC dubbo服务；
 
 #### step 2 启动 TCC Demo（）
-
-运行 [DubboTccTransactionStarter](https://github.com/seata/seata-samples/blob/master/tcc/dubbo-tcc-sample/src/main/java/io/seata/samples/tcc/dubbo/starter/DubboTccTransactionStarter.java)
-, 启动 demo工程；
+修改application.yml中对应的配置，比如端口号，以及dubbo应用名等。  
+运行TccConsumerStarter, 启动 demo工程；
 
 本应用订阅TCC dubbo服务，发起方分布式事务，调用TCC dubbo参与者；内含TCC 事务提交场景和TCC事务回滚场景的演示；

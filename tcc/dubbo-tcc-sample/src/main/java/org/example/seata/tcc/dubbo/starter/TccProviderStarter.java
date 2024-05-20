@@ -24,8 +24,8 @@ import org.springframework.context.ConfigurableApplicationContext;
 /**
  * 因为provider和consumer在一个工程中，启动时记得修改application.yml的端口号 Server.port
  */
-@SpringBootApplication(scanBasePackages = "io.seata.samples.tcc.dubbo")
-@EnableDubbo(scanBasePackages = "io.seata.samples.tcc.dubbo.action")
+@SpringBootApplication(scanBasePackages = "org.example.seata.tcc.dubbo")
+@EnableDubbo(scanBasePackages = "org.example.seata.tcc.dubbo.action")
 public class TccProviderStarter{
 
     public static void main(String[] args) throws Exception {

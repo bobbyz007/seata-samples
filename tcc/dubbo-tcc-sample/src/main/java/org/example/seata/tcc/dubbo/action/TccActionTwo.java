@@ -15,11 +15,11 @@
  */
 package org.example.seata.tcc.dubbo.action;
 
-import java.util.List;
+import org.apache.seata.rm.tcc.api.BusinessActionContext;
+import org.apache.seata.rm.tcc.api.BusinessActionContextParameter;
+import org.apache.seata.rm.tcc.api.TwoPhaseBusinessAction;
 
-import io.seata.rm.tcc.api.BusinessActionContext;
-import io.seata.rm.tcc.api.BusinessActionContextParameter;
-import io.seata.rm.tcc.api.TwoPhaseBusinessAction;
+import java.util.List;
 
 /**
  * The interface Tcc action two.
