@@ -31,10 +31,10 @@
 
     <dubbo:protocol name="dubbo" port="-1"/>
 
-    <dubbo:reference id="inventoryAction" interface="io.seata.samples.saga.action.InventoryAction" check="false"
+    <dubbo:reference id="inventoryAction" interface="org.example.seata.action.saga.InventoryAction" check="false"
                      lazy="true"/>
 
-    <dubbo:reference id="balanceAction" interface="io.seata.samples.saga.action.BalanceAction" check="false"
+    <dubbo:reference id="balanceAction" interface="org.example.seata.action.saga.BalanceAction" check="false"
                      lazy="true"/>
 
 

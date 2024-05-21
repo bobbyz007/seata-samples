@@ -75,8 +75,8 @@
         <!--<module>springboot-dubbo-seata</module>-->
         <!--<module>dubbo-multiple-datasource-mybatis</module>-->
         <!--<module>springboot-shardingsphere-seata</module>-->
-        <module>tcc</module>
-        <!--<module>saga</module>-->
+        <!--<module>tcc</module>-->
+        <module>saga</module>
     </modules>
 
     <dependencyManagement>
@@ -96,6 +96,34 @@
                 <artifactId>seata-spring-boot-starter</artifactId>
                 <version>${seata.version}</version>
             </dependency>
+            <!--开始：如果不想引入 seata-all，可以单独引入以下seata包(以nacos为例) -->
+            <dependency>
+                <groupId>org.apache.seata</groupId>
+                <artifactId>seata-spring</artifactId>
+                <version>${seata.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.seata</groupId>
+                <artifactId>seata-http-jakarta</artifactId>
+                <version>${seata.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.seata</groupId>
+                <artifactId>seata-config-nacos</artifactId>
+                <version>${seata.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.seata</groupId>
+                <artifactId>seata-discovery-nacos</artifactId>
+                <version>${seata.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.seata</groupId>
+                <artifactId>seata-saga-spring</artifactId>
+                <version>${seata.version}</version>
+            </dependency>
+            <!--结束：如果不想引入 seata-all，可以单独引入以下seata包(以nacos为例) -->
+
             <dependency>
                 <groupId>io.netty</groupId>
                 <artifactId>netty-all</artifactId>

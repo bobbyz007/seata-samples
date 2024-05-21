@@ -17,10 +17,10 @@ package org.example.seata.tcc.service;
 
 import java.util.Map;
 
-import io.seata.core.context.RootContext;
+import org.apache.seata.core.context.RootContext;
+import org.apache.seata.spring.annotation.GlobalTransactional;
 import org.example.seata.tcc.action.TccActionOne;
 import org.example.seata.tcc.action.TccActionTwo;
-import io.seata.spring.annotation.GlobalTransactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

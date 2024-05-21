@@ -33,12 +33,12 @@
 
     <dubbo:provider timeout="10000" threads="10" threadpool="fixed" loadbalance="roundrobin"/>
 
-    <dubbo:service ref="inventoryActionImpl" interface="io.seata.samples.saga.action.InventoryAction"/>
+    <dubbo:service ref="inventoryActionImpl" interface="org.example.seata.action.saga.InventoryAction"/>
 
-    <dubbo:service ref="balanceActionImpl" interface="io.seata.samples.saga.action.BalanceAction"/>
+    <dubbo:service ref="balanceActionImpl" interface="org.example.seata.action.saga.BalanceAction"/>
 
-    <bean id="inventoryActionImpl" class="io.seata.samples.saga.action.impl.InventoryActionImpl"/>
+    <bean id="inventoryActionImpl" class="org.example.seata.impl.action.saga.InventoryActionImpl"/>
 
-    <bean id="balanceActionImpl" class="io.seata.samples.saga.action.impl.BalanceActionImpl"/>
+    <bean id="balanceActionImpl" class="org.example.seata.impl.action.saga.BalanceActionImpl"/>
 
 </beans>
