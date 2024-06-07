@@ -12,10 +12,6 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import javax.sql.DataSource;
 import java.util.concurrent.ThreadPoolExecutor;
 
-/***
- * @author : Rain
- * @date : 2021/7/23 11:38 AM
- */
 @Configuration
 public class StateMachineEngineConfig {
     @Autowired
@@ -44,14 +40,9 @@ public class StateMachineEngineConfig {
     public ProcessCtrlStateMachineEngine stateMachineEngine() {
         ProcessCtrlStateMachineEngine processCtrlStateMachineEngine = new ProcessCtrlStateMachineEngine();
         processCtrlStateMachineEngine.setStateMachineConfig(dbStateMachineConfig());
+        // 设置全局holder，否则抛出空指针异常
+        StateMachineEngineHolder.setStateMachineEngine(processCtrlStateMachineEngine);
         return processCtrlStateMachineEngine;
-    }
-
-    @Bean
-    public StateMachineEngineHolder stateMachineEngineHolder() {
-        StateMachineEngineHolder engineHolder = new StateMachineEngineHolder();
-        engineHolder.setStateMachineEngine(stateMachineEngine());
-        return engineHolder;
     }
 
     @Bean

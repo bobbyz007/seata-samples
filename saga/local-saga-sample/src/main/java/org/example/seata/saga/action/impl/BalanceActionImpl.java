@@ -51,6 +51,7 @@ public class BalanceActionImpl implements BalanceAction {
                 throw new RuntimeException("compensate reduce balance failed");
             }
         }
+        LOGGER.warn("---------------------------- Starting compensate ----------------------------");
         LOGGER.warn("compensate reduce balance succeed, businessKey:" + businessKey);
         return true;
     }

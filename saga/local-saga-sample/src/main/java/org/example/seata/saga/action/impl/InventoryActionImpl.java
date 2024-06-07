@@ -36,6 +36,7 @@ public class InventoryActionImpl implements InventoryAction {
 
     @Override
     public boolean compensateReduce(String businessKey) {
+        LOGGER.warn("---------------------------- Starting compensate ----------------------------");
         LOGGER.warn("compensate reduce inventory succeed, businessKey:" + businessKey);
         return true;
     }
