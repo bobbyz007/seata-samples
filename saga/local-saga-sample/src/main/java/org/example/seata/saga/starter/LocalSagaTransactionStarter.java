@@ -39,7 +39,7 @@ import org.springframework.util.Assert;
  * 业务成功： mockReduceBalanceFail参数不设置或为false。
  *
  */
-@SpringBootApplication(scanBasePackages = "org.example.seata.saga", exclude = {SeataAutoConfiguration.class})
+@SpringBootApplication(scanBasePackages = "org.example.seata.saga")
 public class LocalSagaTransactionStarter {
 
     public static void main(String[] args) {

@@ -14,7 +14,7 @@ seata:
   enabled: true
   application-id: local-saga-sample
   tx-service-group: default_tx_group
-  enable-auto-data-source-proxy: false
+  enable-auto-data-source-proxy: false  # saga设置为false
   config:
     type: nacos
     nacos:
