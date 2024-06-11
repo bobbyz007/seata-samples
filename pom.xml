@@ -71,12 +71,12 @@
 
     <!-- 由于各个测试模块依赖差别大，建议每次测试仅开放一个模块 -->
     <modules>
-        <!--<module>springboot-mybatis</module>-->
+        <module>springboot-mybatis</module>
         <!--<module>springboot-dubbo-seata</module>-->
         <!--<module>dubbo-multiple-datasource-mybatis</module>-->
         <!--<module>springboot-shardingsphere-seata</module>-->
         <!--<module>tcc</module>-->
-        <module>saga</module>
+        <!--<module>saga</module>-->
     </modules>
 
     <dependencyManagement>

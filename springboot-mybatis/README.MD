@@ -74,7 +74,7 @@
 启动account服务: 管理用户账户余额，访问 http://localhost:8083/api/account/debit?userId=1001&orderMoney=10 验证。  
 <br>
 启动order服务： 负责创建订单，以及调用account服务扣减用户账户余额。  
-访问 http://localhost:8082/api/order/debit?userId=1001&commodityCode=2001&count=10 验证。  
+访问 http://localhost:8082/api/order/create?userId=1001&commodityCode=2001&count=10 验证。  
 <br>
 启动stock服务：负责商品库存扣减以及查询等。  
 访问 http://localhost:8081/api/stock/deduct?commodityCode=2001&count=10 验证。  

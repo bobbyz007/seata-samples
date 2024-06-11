@@ -25,7 +25,7 @@
         <!-- 配置打印单个Mapper sql语句 -->
         <!--<Logger name="persistence.org.example.stock.StockMapper" level="trace"/>-->
         <!-- 配置打印一组Mapper sql语句 -->
-        <!--<Logger name="org.example.stock.persistence" level="trace"/>-->
+        <!--<Logger name="org.example.seata.sbm.account.persistence" level="trace"/>-->
         <Root level="info">
             <AppenderRef ref="Console"/>
         </Root>
