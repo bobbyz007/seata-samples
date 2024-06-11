@@ -13,25 +13,13 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-package org.example.seata.saga.action;
+package org.example.seata.saga.dubbo.provider.action;
 
-/**
- * Inventory Actions
- */
-public interface InventoryAction {
+import java.math.BigDecimal;
+import java.util.Map;
 
-    /**
-     * reduce
-     *
-     * @param count
-     * @return
-     */
-    boolean reduce(String businessKey, int count);
+public interface BalanceAction {
+    boolean reduce(String businessKey, BigDecimal amount, Map<String, Object> params);
 
-    /**
-     * increase
-     *
-     * @return
-     */
-    boolean compensateReduce(String businessKey);
+    boolean compensateReduce(String businessKey, Map<String, Object> params);
 }

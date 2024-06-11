@@ -1,15 +1,12 @@
-package org.example.seata.saga.config;
+package org.example.seata.saga.dubbo.consumer.config;
 
-import io.seata.saga.engine.config.DbStateMachineConfig;
-import io.seata.saga.engine.impl.ProcessCtrlStateMachineEngine;
-import io.seata.saga.rm.StateMachineEngineHolder;
+import org.apache.seata.saga.engine.config.DbStateMachineConfig;
+import org.apache.seata.saga.engine.impl.ProcessCtrlStateMachineEngine;
+import org.apache.seata.saga.rm.StateMachineEngineHolder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Profile;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
 import javax.sql.DataSource;
@@ -46,14 +43,9 @@ public class StateMachineEngineConfig {
     public ProcessCtrlStateMachineEngine stateMachineEngine() {
         ProcessCtrlStateMachineEngine processCtrlStateMachineEngine = new ProcessCtrlStateMachineEngine();
         processCtrlStateMachineEngine.setStateMachineConfig(dbStateMachineConfig());
+        // 设置全局holder，否则抛出空指针异常
+        StateMachineEngineHolder.setStateMachineEngine(processCtrlStateMachineEngine);
         return processCtrlStateMachineEngine;
-    }
-
-    @Bean
-    public StateMachineEngineHolder stateMachineEngineHolder() {
-        StateMachineEngineHolder engineHolder = new StateMachineEngineHolder();
-        engineHolder.setStateMachineEngine(stateMachineEngine());
-        return engineHolder;
     }
 
     @Bean

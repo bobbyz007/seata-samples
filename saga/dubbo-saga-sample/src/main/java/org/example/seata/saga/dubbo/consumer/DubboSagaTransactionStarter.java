@@ -13,22 +13,22 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-package org.example.seata.saga.consumer;
+package org.example.seata.saga.dubbo.consumer;
 
 import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 
-import io.seata.saga.engine.AsyncCallback;
-import io.seata.saga.engine.StateMachineEngine;
-import io.seata.saga.proctrl.ProcessContext;
-import io.seata.saga.statelang.domain.ExecutionStatus;
-import io.seata.saga.statelang.domain.StateMachineInstance;
-import org.example.seata.saga.ApplicationKeeper;
-import org.example.seata.saga.action.BalanceAction;
-import org.example.seata.saga.action.InventoryAction;
+import org.apache.seata.saga.engine.AsyncCallback;
+import org.apache.seata.saga.engine.StateMachineEngine;
+import org.apache.seata.saga.proctrl.ProcessContext;
+import org.apache.seata.saga.statelang.domain.ExecutionStatus;
+import org.apache.seata.saga.statelang.domain.StateMachineInstance;
 import org.apache.dubbo.config.annotation.DubboReference;
 import org.apache.dubbo.config.spring.context.annotation.EnableDubbo;
+import org.example.seata.saga.dubbo.ApplicationKeeper;
+import org.example.seata.saga.dubbo.provider.action.BalanceAction;
+import org.example.seata.saga.dubbo.provider.action.InventoryAction;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -38,8 +38,8 @@ import org.springframework.util.Assert;
  * 运行时配置添加main args参数：--spring.profiles.active=consumer
  */
 
-@SpringBootApplication(scanBasePackages = {"io.seata.samples.saga.config", "io.seata.samples.saga.consumer"})
-@EnableDubbo(scanBasePackages = "io.seata.samples.saga.consumer")
+@SpringBootApplication(scanBasePackages = {"org.example.seata.saga.dubbo.consumer"})
+@EnableDubbo(scanBasePackages = "org.example.seata.saga.dubbo.consumer")
 public class DubboSagaTransactionStarter {
     @DubboReference(id = "inventoryAction", version = "1.0.0", timeout = 60000, check = false)
     private InventoryAction inventoryAction;

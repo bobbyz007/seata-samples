@@ -22,3 +22,7 @@ dubbo:
     threadpool: cached
     threads: 200
     connections: 100
+# 因为在provider和consumer在同一个项目中，没办法不引入seata包，所以在provider段显式关闭。
+seata:
+  enabled: false
+  enable-auto-data-source-proxy: false

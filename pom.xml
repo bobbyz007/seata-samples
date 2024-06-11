@@ -41,7 +41,7 @@
 
         <netty4.version>4.1.106.Final</netty4.version>
         <junit.version>5.10.1</junit.version>
-        <dubbo.version>3.2.12</dubbo.version>
+        <dubbo.version>3.2.13</dubbo.version>
         <fastjson2.version>2.0.46</fastjson2.version>
         <config.version>1.4.3</config.version>
 

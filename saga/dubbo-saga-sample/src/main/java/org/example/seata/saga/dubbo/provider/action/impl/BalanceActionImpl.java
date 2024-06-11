@@ -13,19 +13,15 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-package org.example.seata.saga.action.impl;
+package org.example.seata.saga.dubbo.provider.action.impl;
 
 import java.math.BigDecimal;
 import java.util.Map;
 
-import org.example.seata.saga.action.BalanceAction;
 import org.apache.dubbo.config.annotation.DubboService;
+import org.example.seata.saga.dubbo.provider.action.BalanceAction;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-/**
- * @author lorne.cl
- */
 
 @DubboService(version = "1.0.0", interfaceClass = BalanceAction.class)
 public class BalanceActionImpl implements BalanceAction {

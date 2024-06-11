@@ -9,26 +9,3 @@ spring:
     url: jdbc:mysql://127.0.0.1:3306/test_dubbo_saga?useSSL=false&serverTimezone=UTC
     username: mysql
     password: mysql
-
-seata:
-  enabled: true
-  application-id: dubbo-saga-sample
-  tx-service-group: default_tx_group
-  #enable-auto-data-source-proxy: true
-  config:
-    type: nacos
-    nacos:
-      server-addr: 127.0.0.1:8848
-      namespace: seata-server
-      group: SEATA_GROUP
-      dataId: "seataServer.properties"
-      #username: "nacos"
-      #password: "nacos"
-  registry:
-    type: nacos
-    nacos:
-      server-addr: 127.0.0.1:8848
-      namespace: seata-server
-      group: SEATA_GROUP
-      application: seata-server
-      cluster: default

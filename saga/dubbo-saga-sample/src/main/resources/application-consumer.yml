@@ -23,3 +23,26 @@ dubbo:
     threadpool: cached
     threads: 200
     connections: 100
+
+seata:
+  enabled: true
+  application-id: dubbo-saga-sample
+  tx-service-group: default_tx_group
+  enable-auto-data-source-proxy: false  # saga设置为false
+  config:
+    type: nacos
+    nacos:
+      server-addr: 127.0.0.1:8848
+      namespace: seata-server
+      group: SEATA_GROUP
+      dataId: "seataServer.properties"
+      #username: "nacos"
+      #password: "nacos"
+  registry:
+    type: nacos
+    nacos:
+      server-addr: 127.0.0.1:8848
+      namespace: seata-server
+      group: SEATA_GROUP
+      application: seata-server
+      cluster: default

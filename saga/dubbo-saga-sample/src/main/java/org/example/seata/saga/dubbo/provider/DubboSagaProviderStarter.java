@@ -13,10 +13,11 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-package org.example.seata.saga.provider;
+package org.example.seata.saga.dubbo.provider;
 
-import org.example.seata.saga.ApplicationKeeper;
 import org.apache.dubbo.config.spring.context.annotation.EnableDubbo;
+import org.apache.seata.spring.boot.autoconfigure.SeataAutoConfiguration;
+import org.example.seata.saga.dubbo.ApplicationKeeper;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -24,15 +25,9 @@ import org.springframework.context.ConfigurableApplicationContext;
 /**
  * 运行时配置添加main args参数：--spring.profiles.active=provider
  */
-@SpringBootApplication(scanBasePackages = "io.seata.samples.saga")
-@EnableDubbo(scanBasePackages = "io.seata.samples.saga.action")
+@SpringBootApplication(scanBasePackages = "org.example.seata.saga.dubbo.provider", exclude = {SeataAutoConfiguration.class})
+@EnableDubbo(scanBasePackages = "org.example.seata.saga.dubbo.provider")
 public class DubboSagaProviderStarter {
-    /**
-     * The entry point of application.
-     *
-     * @param args the input arguments
-     * @throws Exception the exception
-     */
     public static void main(String[] args) throws Exception {
         ConfigurableApplicationContext applicationContext = SpringApplication.run(DubboSagaProviderStarter.class, args);
 
