@@ -47,6 +47,13 @@
         <dependency>
             <groupId>org.apache.seata</groupId>
             <artifactId>seata-spring-boot-starter</artifactId>
+            <!-- 解决异常：ANTLR Tool version 4.10.1 used for code generation does not match the current runtime version 4.8 -->
+            <exclusions>
+                <exclusion>
+                    <groupId>org.antlr</groupId>
+                    <artifactId>antlr4-runtime</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <dependency>

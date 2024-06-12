@@ -24,7 +24,7 @@ seata:
   enabled: true
   #enable-auto-data-source-proxy: false
   #use-jdk-proxy: true
-  application-id: shardingsphere-seata-consumer
+  application-id: ss-seata-dubbo-consumer
   tx-service-group: my_test_tx_group
   config:
     type: nacos

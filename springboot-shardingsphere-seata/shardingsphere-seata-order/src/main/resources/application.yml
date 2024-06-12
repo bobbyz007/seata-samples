@@ -4,10 +4,9 @@ server:
 spring:
   application:
     name: shardingsphere-seata-dubbo-provider
-  shardingsphere:
-    dataSource:
-      driver-class-name: org.apache.shardingsphere.driver.ShardingSphereDriver
-      url: jdbc:shardingsphere:classpath:shardingsphere-config.yaml
+  dataSource:
+    driver-class-name: org.apache.shardingsphere.driver.ShardingSphereDriver
+    url: jdbc:shardingsphere:classpath:shardingsphere-config.yaml
 
 dubbo:
   registry:
@@ -16,7 +15,7 @@ dubbo:
     username: nacos
     password: nacos
   application:
-    name: shardingsphere-seata-provider
+    name: shardingsphere-seata-dubbo-provider
     qos-enable: false
   protocol:
     name: dubbo
@@ -30,8 +29,8 @@ seata:
   # 进而初始化 SeataATShardingSphereTransactionManager，负责与seata server交互
   enable-auto-data-source-proxy: false
   # see https://github.com/apache/shardingsphere/issues/15086
-  use-jdk-proxy: true
-  application-id: shardingsphere-seata-provider
+  # use-jdk-proxy: true
+  application-id: ss-seata-dubbo-provider
   tx-service-group: my_test_tx_group
   config:
     type: nacos

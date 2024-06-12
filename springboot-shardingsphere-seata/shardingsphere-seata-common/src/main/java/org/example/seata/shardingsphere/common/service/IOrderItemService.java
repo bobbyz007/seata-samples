@@ -15,8 +15,6 @@
  */
 package org.example.seata.shardingsphere.common.service;
 
-
-import com.baomidou.mybatisplus.extension.service.IService;
 import org.example.seata.shardingsphere.common.entity.OrderItemEntity;
 
 public interface IOrderItemService {

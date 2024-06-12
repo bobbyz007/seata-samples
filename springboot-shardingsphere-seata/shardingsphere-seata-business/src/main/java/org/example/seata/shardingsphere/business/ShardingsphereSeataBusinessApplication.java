@@ -22,13 +22,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 
-@MapperScan({"com.baomidou.springboot.mapper*", "io.seata.samples.shardingsphere.modules.mapper*"})
 @SpringBootApplication(exclude={DataSourceAutoConfiguration.class})
-@EnableDubbo(scanBasePackages = "io.seata.samples.shardingsphere.modules.service")
+@EnableDubbo(scanBasePackages = "org.example.seata.shardingsphere.business.service")
 public class ShardingsphereSeataBusinessApplication {
-
     public static void main(String[] args) {
         SpringApplication.run(ShardingsphereSeataBusinessApplication.class, args);
     }
-
 }

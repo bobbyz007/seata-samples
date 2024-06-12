@@ -50,6 +50,6 @@ public class BusinessServiceImpl implements IBusinessService {
 
         System.out.println("XID:" + RootContext.getXID());
 
-        //throw new RuntimeException("回滚测试");
+        throw new RuntimeException("回滚测试");
     }
 }
