@@ -62,10 +62,7 @@ rules:
       snowflake_generator:
         type: SNOWFLAKE
 
-  # integrate seata transaction
-#  - !TRANSACTION
-#    defaultType: BASE
-#    providerType: Seata
+# integrate seata transaction
 transaction:
   defaultType: BASE
   providerType: Seata
