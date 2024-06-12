@@ -1,6 +1,14 @@
 server:
   port: 8095
 
+spring:
+  application:
+    name: shardingsphere-seata-dubbo-provider
+  shardingsphere:
+    dataSource:
+      driver-class-name: org.apache.shardingsphere.driver.ShardingSphereDriver
+      url: jdbc:shardingsphere:classpath:shardingsphere-config.yaml
+
 dubbo:
   registry:
     address: nacos://127.0.0.1:8848
@@ -8,83 +16,13 @@ dubbo:
     username: nacos
     password: nacos
   application:
-    name: shardingsphere-seata-nacos-dubbo-provider-order
+    name: shardingsphere-seata-provider
     qos-enable: false
   protocol:
     name: dubbo
     port: 20881
   scan:
     base-packages: io.seata.samples.shardingsphere.modules.service
-
-#endpoint http://localhost:8080/actuator/nacos-config
-#health http://localhost:8080/actuator/health
-management:
-  endpoints:
-    web:
-      exposure:
-        include: '*'
-
-spring:
-  application:
-    name: shardingsphere-seata-nacos-dubbo-provider-order
-  shardingsphere:
-    datasource:
-      names: ds0,ds1
-      ds0:
-        type: com.alibaba.druid.pool.DruidDataSource
-        driver-class-name: com.mysql.cj.jdbc.Driver
-        username: root
-        password: 123456
-        url: jdbc:mysql://127.0.0.1:33306/ds_0?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=UTC
-      ds1:
-        type: com.alibaba.druid.pool.DruidDataSource
-        driver-class-name: com.mysql.cj.jdbc.Driver
-        username: root
-        password: 123456
-        url: jdbc:mysql://127.0.0.1:33306/ds_1?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=UTC
-    rules:
-      sharding:
-        default-database-strategy:
-          standard:
-            sharding-column: user_id
-            sharding-algorithm-name: database-inline
-        sharding-algorithms:
-          database-inline:
-            type: INLINE
-            props:
-              algorithm-expression: ds$->{user_id % 2}
-          t-order-inline:
-            type: INLINE
-            props:
-              algorithm-expression: t_order_$->{order_id % 2}
-          t-order-item-inline:
-            type: INLINE
-            props:
-              algorithm-expression: t_order_item_$->{order_id % 2}
-
-        tables:
-          t_order:
-            actual-data-nodes: ds$->{0..1}.t_order_$->{0..1}
-            table-strategy:
-              standard:
-                sharding-column: order_id
-                sharding-algorithm-name: t-order-inline
-            key-generate-strategy:
-              column: order_id
-              key-generator-name: snowflake
-
-          t_order_item:
-            actual-data-nodes: ds$->{0..1}.t_order_item_$->{0..1}
-            table-strategy:
-              standard:
-                sharding-column: order_id
-                sharding-algorithm-name: t-order-item-inline
-            key-generate-strategy:
-              column: order_item_id
-              key-generator-name: snowflake
-        key-generators:
-          snowflake:
-            type: SNOWFLAKE
 
 seata:
   enabled: true
@@ -93,26 +31,25 @@ seata:
   enable-auto-data-source-proxy: false
   # see https://github.com/apache/shardingsphere/issues/15086
   use-jdk-proxy: true
-  application-id: shardingsphere-seata-order
+  application-id: shardingsphere-seata-provider
   tx-service-group: my_test_tx_group
   config:
     type: nacos
     nacos:
-      namespace: seata-server
       server-addr: 127.0.0.1:8848
+      namespace: seata-server
       group: SEATA_GROUP
-      dataId: seataServer.properties
-      username: nacos
-      password: nacos
+      dataId: "seataServer.properties"
+      #username: "nacos"
+      #password: "nacos"
   registry:
-    type: zk
-    zk:
+    type: nacos
+    nacos:
+      server-addr: 127.0.0.1:8848
+      namespace: seata-server
+      group: SEATA_GROUP
+      application: seata-server
       cluster: default
-      server-addr: 127.0.0.1:2181
-      session-timeout: 6000
-      connect-timeout: 2000
-      username:
-      password:
 
 #mybatis:
 #  mapper-locations: classpath:/mapper/**/*.xml   #把xml文件放在com.XX.mapper.*中可能会出现找到的问题，这里把他放在resource下的mapper中
@@ -126,7 +63,7 @@ mybatis-plus:
   #  datasource: dataSource
   mapper-locations: classpath:/mapper/**/*.xml
   #实体扫描，多个package用逗号或者分号分隔
-  type-aliases-package: io.seata.samples.shardingsphere.modules.entity
+  type-aliases-package: org.example.seata.shardingsphere.common.entity
   #typeEnumsPackage: com.baomidou.springboot.entity.enums
   global-config:
     #主键类型  0:"数据库ID自增", 1:"用户输入ID",2:"全局唯一ID (数字类型唯一ID)", 3:"全局唯一ID UUID", 4:"该类型为未设置主键类型", 5:"字符串全局唯一ID";
@@ -149,3 +86,11 @@ mybatis-plus:
     cache-enabled: false
   configuration-properties:
     dbType: mysql #设置全局属性用于控制数据库的类型
+
+#endpoint http://localhost:8080/actuator/nacos-config
+#health http://localhost:8080/actuator/health
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

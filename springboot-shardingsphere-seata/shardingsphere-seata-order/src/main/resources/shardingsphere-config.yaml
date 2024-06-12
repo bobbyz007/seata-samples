@@ -1,0 +1,72 @@
+dataSources:
+  ds_0:
+    dataSourceClassName: com.alibaba.druid.pool.DruidDataSource
+    driverClassName: com.mysql.cj.jdbc.Driver
+    # 使用druid必须用url，而不是jdbcUrl
+    url: jdbc:mysql://127.0.0.1:3306/ds_0?characterEncoding=utf-8
+    username: mysql
+    password: mysql
+  ds_1:
+    dataSourceClassName: com.alibaba.druid.pool.DruidDataSource
+    driverClassName: com.mysql.cj.jdbc.Driver
+    # 使用druid必须用url，而不是jdbcUrl
+    url: jdbc:mysql://127.0.0.1:3306/ds_1?characterEncoding=utf-8
+    username: mysql
+    password: mysql
+
+rules:
+  - !SHARDING
+    # 默认数据库分片策略
+    defaultDatabaseStrategy:
+      standard:
+        shardingColumn: user_id
+        shardingAlgorithmName: database_inline
+
+    # 数据分片规则配置
+    tables:
+      t_order:
+        actualDataNodes: ds_$->{0..1}.t_order_$->{0..1}
+        tableStrategy:
+          standard:
+            shardingColumn: order_id
+            shardingAlgorithmName: t_order_inline
+        keyGenerateStrategy:
+          column: order_id
+          keyGeneratorName: snowflake_generator
+      t_order_item:
+        actualDataNodes: ds_$->{0..1}.t_order_item_$->{0..1}
+        tableStrategy:
+          standard:
+            shardingColumn: order_id
+            shardingAlgorithmName: t_order_item_inline
+        keyGenerateStrategy:
+          column: order_item_id
+          keyGeneratorName: snowflake_generator
+
+    # 分片算法配置
+    shardingAlgorithms:
+      database_inline:
+        type: INLINE
+        props:
+          algorithm-expression: ds_$->{user_id % 2}
+      t_order_inline:
+        type: INLINE
+        props:
+          algorithm-expression: t_order_$->{order_id % 2}
+      t_order_item_inline:
+        type: INLINE
+        props:
+          algorithm-expression: t_order_item_$->{order_id % 2}
+
+    keyGenerators:
+      snowflake_generator:
+        type: SNOWFLAKE
+
+  # integrate seata transaction
+  - !TRANSACTION
+    defaultType: BASE
+    providerType: Seata
+
+#打印sql
+props:
+  sql-show: true
